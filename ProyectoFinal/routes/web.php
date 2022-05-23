@@ -26,5 +26,9 @@ Route::get('/critico_info_view/{id}', [CriticoController::class, "getCriticoInfo
 
 Route::get('/criticos/{id}', [CriticoController::class, "getCrticoById"]);
 
+Route::get('/perfil', [CriticoController::class, "getPerfil"]);
+
+
+
 
 
