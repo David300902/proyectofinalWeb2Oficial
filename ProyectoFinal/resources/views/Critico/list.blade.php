@@ -2,13 +2,12 @@
 
 @section('title', 'Criticos')
 
-
 @section('script')
 
 <script>
     var app = angular.module("CriticoApp", [])
 
-app.controller("CrticoController", ($scope, $http)=>{
+    app.controller("CrticoController", ($scope, $http)=>{
 
     $scope.criticos = {}
 
@@ -17,13 +16,15 @@ app.controller("CrticoController", ($scope, $http)=>{
         $http.get('/criticos').then(res=>{
 
             $scope.criticos = res.data
-
+            $scope.criticos.forEach(a => {
+                let date = a.created_at
+                console.log(date);
+                let diff = new Date(date).getUTCDate() - new Date().getUTCDate()
+                a.date = diff<0?0:diff
+            })
         })
-
     }
-
     $scope.getAll();
-
 })
 
 </script>
@@ -42,7 +43,7 @@ app.controller("CrticoController", ($scope, $http)=>{
             <a href="/critico_info_view/@{{d.id}}" class="btn btn-primary">Ver mas detalles sobre @{{d.firstName}}</a>
         </div>
         <div class="card-footer text-muted">
-            2 days ago
+            Hace @{{d.date}} dias
         </div>
     </div>
 </div>
