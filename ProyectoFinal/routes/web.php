@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CriticoController;
+use App\Http\Controllers\OtrosController;
+use App\Http\Controllers\ArticuloController;
+use App\Http\Controllers\RestauranteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +30,14 @@ Route::get('/critico_info_view/{id}', [CriticoController::class, "getCriticoInfo
 Route::get('/criticos/{id}', [CriticoController::class, "getCrticoById"]);
 
 Route::get('/perfil', [CriticoController::class, "getPerfil"]);
+
+Route::get('/', [OtrosController::class, "getInicio"]);
+
+Route::get('/articulos', [ArticuloController::class, "getArticulos"]);
+
+Route::get('/articulos/{id}', [ArticuloController::class, "getArticulosByCriticoID"]);
+
+Route::get('/restaurantes/{id}', [RestauranteController::class, "getRestauranteByID"]);
 
 
 

@@ -14,4 +14,8 @@ class ArticuloController extends Controller
     public function getArticulos(){
         return Articulo::all();
     }
+
+    public function getArticulosByCriticoID($id){
+        return Articulo::where(['criticoId' => intval($id)])->get();
+    }
 }

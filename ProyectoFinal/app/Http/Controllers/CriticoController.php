@@ -26,6 +26,4 @@ class CriticoController extends Controller
     public function getPerfil(){
         return view('Critico.perfil');
     }
-
-    
 }

@@ -7,15 +7,28 @@
       var app = angular.module("CriticoInfoApp", [])
       app.controller("CriticoInfoController", ($scope, $http)=>{
         $scope.critico = {}
+        $scope.r = []
         let id = window.location.href.split('/')[4]
-        $scope.getCritico = function (){
+        $scope.getCritico =  async function (){
           console.log(id);
-            $http.get('/criticos/' + id).then(res=>{
+            $scope.critico = await $http.get('/criticos/' + id).then(res=>{
                 $scope.critico = res.data
-                console.log(res.data);
             })
+            var data = await $http.get(`/articulos/` + id)
+            $scope.articulos = data.data
+            var urlres = '/restaurantes/' 
+            for (const item of $scope.articulos) {
+                var d = await $http.get(urlres + String(item.restauranteId))
+                $scope.r.push(d.data)
+            }            
+            console.log($scope.r)
+
         }
+
+
+
         $scope.getCritico();
+
       })
   </script>
 @stop
@@ -127,6 +140,9 @@ section {
     border-radius: 0.25rem!important;
 }
 </style>
+
+
+
 <div ng-app="CriticoInfoApp" ng-controller="CriticoInfoController">
 <section class="bg-light">
     <div class="container">
@@ -210,6 +226,16 @@ section {
                                 <div class="animated custom-bar progress-bar slideInLeft bg-secondary" style="width:60%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="70" role="progressbar"></div>
                             </div>
                         </div>
+                        <div class="card text-center" ng-repeat="r in criticos">
+        <div class="card-header">
+        @{{r.name}}
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><img src="@{{r.foto}}" alt="no se encontro" width="150" height="100"></h5>
+            <p class="card-text">@{{r.descripcion}}</p>
+            <a href="/critico_info_view/@{{d.id}}" class="btn btn-primary">Ver mas detalles sobre @{{r.name}}</a>
+        </div>
+    </div>
                         <div>
                             <span class="section-title text-primary mb-3 mb-sm-4">Education</span>
                             <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.</p>
