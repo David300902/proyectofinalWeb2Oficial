@@ -1,4 +1,5 @@
-@extends("welcome")
+@extends("main")
+
 
 @section('title', 'Index')
 
@@ -18,8 +19,7 @@
         background-color: white;
         justify-content: space-evenly;
         height: 300px;
-        width: 98%;
-        margin: 10px 0 10px 1%;
+        width: 100%;
         border-radius: 20px;
         background-color: rgba(221, 192, 255, 0.37);
     }
@@ -81,10 +81,12 @@
         
     }
     .carta-cartas{
+        width:100%;
         display: flex;
         flex-direction: row;
         font-weight: lighter;
         text-align: center;
+        justify-content: space-evenly;
     }
     .carta {
         margin: 25px;
@@ -103,16 +105,40 @@
         border: 2px solid black;
         border-radius: 20px;
         padding: 20px;
+
     }
+    .carta-views 
+    {
+        --w: calc(100%/3 - 20px);
+        border-style: solid;
+        width: var(--w);
+        text-align: center;
+        padding: 20px;
+        border-width: 4px;
+        border-radius: 20px;
+        transition: all 0.6s;
+        border-color: green;
+        cursor: pointer;
+        background: linear-gradient(45deg, green 30%, yellow 70%);
+
+    }
+    
+    .carta-views:hover{
+        width: calc(var(--w) + 50px);
+        margin: 0px 50px;
+    }
+
+
+
 </style>
 
 <div id="banner">
-    E-Blog
+    Criticas
 </div>
 
 <div class="inicia">
-    <h1>Bienvenido al Blog</h1>
-    <button class="btn btn-danger btn-c" id="btnEmpezar">Empezar</button>
+    <h1>Sin cuenta registrate</h1>
+    <a class="btn btn-danger btn-c" href="/register">Empezar</a>
 </div>
 
 <div class="cuerpo-cajas" id="caja-inicio">
@@ -123,24 +149,17 @@
 
 <div class="cuerpo-cajas" id="caja-media">
     <div class="carta-i">
-        <p>Easiest way to repurpose your entire blog
-            SYNC YOUR ENTIRE BLOG SITE LIST AND BEGIN IMPROVING YOUR CONTENT IN MINUTES.</p>
+        <p>Ver</p>
     </div>
     <div class="carta-cartas">
-        <div class="carta">
-            Sync your blog site
-            Sync your entire blog list in seconds with just one click. The system creates two-way sync with your current
-            content.
+        <div class="carta-views">
+            Cricticos
         </div>
-        <div class="carta">
-            Optimize & improve
-            Import specific articles (one at a time) that you want to improve and SEO optimize (or re-optimize). Easily
-            track the progress.
+        <div class="carta-views">
+            Restaurantes
         </div>
-        <div class="carta">
-            Re-publish
-            Ready to post it back? One-click of the Publish button and your improved article content is back on your
-            WordPress blog.
+        <div class="carta-views">
+            Articulos
         </div>
     </div>
 </div>

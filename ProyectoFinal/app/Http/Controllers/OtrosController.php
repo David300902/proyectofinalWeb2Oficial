@@ -9,4 +9,7 @@ class OtrosController extends Controller
     public function getInicio(){
         return view('Otros.inicio');
     }
+    public function getRegisterForm(){
+        return view('Otros.register');
+    }
 }

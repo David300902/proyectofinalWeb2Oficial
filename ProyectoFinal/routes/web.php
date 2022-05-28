@@ -32,6 +32,7 @@ Route::get('/criticos/{id}', [CriticoController::class, "getCrticoById"]);
 Route::get('/perfil', [CriticoController::class, "getPerfil"]);
 
 Route::get('/', [OtrosController::class, "getInicio"]);
+Route::get('/register', [OtrosController::class, "getRegisterForm"]);
 
 Route::get('/articulos', [ArticuloController::class, "getArticulos"]);
 

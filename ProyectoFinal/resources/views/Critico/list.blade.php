@@ -1,4 +1,5 @@
-@extends("welcome")
+@extends("main")
+
 
 @section('title', 'Criticos')
 
