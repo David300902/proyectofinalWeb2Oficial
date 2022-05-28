@@ -13,9 +13,7 @@
     $scope.criticos = {}
 
     $scope.getAll = function (){
-
         $http.get('/criticos').then(res=>{
-
             $scope.criticos = res.data
             $scope.criticos.forEach(a => {
                 let date = a.created_at

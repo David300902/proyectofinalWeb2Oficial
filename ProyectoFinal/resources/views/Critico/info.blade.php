@@ -4,34 +4,7 @@
 @section('title', 'Criticos')
 
 @section('script')
-  <script >
-      var app = angular.module("CriticoInfoApp", [])
-      app.controller("CriticoInfoController", ($scope, $http)=>{
-        $scope.critico = {}
-        $scope.r = []
-        let id = window.location.href.split('/')[4]
-        $scope.getCritico =  async function (){
-          console.log(id);
-            $scope.critico = await $http.get('/criticos/' + id).then(res=>{
-                $scope.critico = res.data
-            })
-            var data = await $http.get(`/articulos/` + id)
-            $scope.articulos = data.data
-            var urlres = '/restaurantes/' 
-            for (const item of $scope.articulos) {
-                var d = await $http.get(urlres + String(item.restauranteId))
-                $scope.r.push(d.data)
-            }            
-            console.log($scope.r)
 
-        }
-
-
-
-        $scope.getCritico();
-
-      })
-  </script>
 @stop
 
 @section('content')
@@ -142,6 +115,29 @@ section {
 }
 </style>
 
+<script >
+      var app = angular.module("CriticoInfoApp", [])
+      app.controller("CriticoInfoController", ($scope, $http)=>{
+        $scope.critico = {}
+        $scope.r = []
+        let id = window.location.href.split('/')[4]
+        $scope.getCritico =  async function(){
+          console.log(id);
+            let criticoData = await $http.get('/criticos/' + id)
+            $scope.critico = criticoData.data
+            var data = await $http.get(`/articulos/` + id)
+            $scope.articulos = data.data
+            var urlres = '/restaurantes/' 
+            for (const item of $scope.articulos) {
+                var d = await $http.get(urlres + String(item.restauranteId))
+                $scope.r.push(d.data)
+            }            
+            console.log($scope.r)
+        }
+        $scope.getCritico();
+
+      })
+  </script>
 
 
 <div ng-app="CriticoInfoApp" ng-controller="CriticoInfoController">

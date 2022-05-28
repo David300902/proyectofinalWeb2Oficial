@@ -23,7 +23,7 @@ class CriticoController extends Controller
         return view('Critico.info');
     }
 
-    public function getPerfil(){
-        return view('Critico.perfil');
+    public function getPerfiles(){
+        return view('Critico.perfiles');
     }
 }

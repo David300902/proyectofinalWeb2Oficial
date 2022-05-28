@@ -23,7 +23,7 @@
         border-radius: 20px;
         background-color: rgba(221, 192, 255, 0.37);
     }
-    .inicia button {
+    .inicia a {
         height: 100px;
         margin-top: 105px;
     }
@@ -129,7 +129,6 @@
     }
 
 
-
 </style>
 
 <div id="banner">
@@ -165,8 +164,7 @@
 </div>
 
 <div class="cuerpo-cajas" id="caja-fin">
-    <p>Explora las distintas opciones de plantillas de sitios web para encontrar la que mejor represente tu marca.
-        Todas las plantillas se pueden personalizar para adaptarlas a tu estilo personal de contar una historia.</p>
+    <p></p>
 </div>
 
 <script>

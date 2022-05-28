@@ -29,8 +29,8 @@
         <div class="navbar-nav">
         <a class="nav-item nav-link active" href="#">Criticas</a>
         <a class="nav-item nav-link" href="#">Restaurantes</a>
-        <a class="nav-item nav-link" href="/criticos_view">Conoce a nuestros Criticos</a>
-        <a class="nav-item nav-link" href="/perfil" tabindex="-1">Otros</a>
+        <a class="nav-item nav-link" href="/perfiles">Conoce a nuestros Criticos</a>
+        <a class="nav-item nav-link" href="/perfiles" tabindex="-1">Otros</a>
         </div>
     </div>
     </nav>
